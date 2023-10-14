@@ -1,25 +1,22 @@
-﻿<Properties StartupConfiguration="{A225E8D6-710F-4F29-8404-60B5F72E5378}|WebApi">
-  <MonoDevelop.Ide.ItemProperties.FernandezCariaga.WebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+﻿<Properties StartupConfiguration="{A28751F1-ECFE-43BE-AC6A-B8433132F23C}|WebApi">
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="FernandezCariaga.WebAPI/Program.cs">
     <Files>
-      <File FileName="FernandezCariaga.WebAPI/Program.cs" Line="27" Column="11" />
-      <File FileName="FernandezCariaga.WebAPI/Endpoints/GetOne.cs" />
+      <File FileName="FernandezCariaga.WebAPI/Program.cs" Line="15" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Parcial_temaA_Usuario" expanded="True">
             <Node name="FernandezCariaga.Entidades" expanded="True" />
-            <Node name="FernandezCariaga.WebAPI" expanded="True" />
+            <Node name="FernandezCariaga.WebAPI" selected="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.ItemProperties.FernandezCariaga.WebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

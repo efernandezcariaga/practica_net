@@ -15,8 +15,13 @@ namespace FernandezCariaga.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //PC CASA
             optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS; Database=NetGenerica; Integrated Security=True; Encrypt=False; MultipleActiveResultSets=True; TrustServerCertificate=True");
+
+            //MAC
+            //optionsBuilder.UseSqlServer(@"Server=localhost; Database=NetGenerica; Integrated Security=True; Encrypt=False; MultipleActiveResultSets=True;");
+
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
         }
     }
-}
+} 

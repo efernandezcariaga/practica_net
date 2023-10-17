@@ -30,12 +30,6 @@
         {
             lbl_adminusers = new Label();
             dgvUsers = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            clave = new DataGridViewTextBoxColumn();
-            email = new DataGridViewTextBoxColumn();
-            nombreUsuario = new DataGridViewTextBoxColumn();
-            tipoUsuario = new DataGridViewTextBoxColumn();
-            ultimoIngreso = new DataGridViewTextBoxColumn();
             btnAdd = new Button();
             btnDelete = new Button();
             btnCargarUsers = new Button();
@@ -50,6 +44,12 @@
             txtNombreUser = new TextBox();
             txtTipoUser = new TextBox();
             btnSave = new Button();
+            id = new DataGridViewTextBoxColumn();
+            clave = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            nombreUsuario = new DataGridViewTextBoxColumn();
+            tipoUsuario = new DataGridViewTextBoxColumn();
+            ultimoIngreso = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             // 
             lbl_adminusers.AutoSize = true;
             lbl_adminusers.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_adminusers.Location = new Point(261, 9);
+            lbl_adminusers.Location = new Point(254, 9);
             lbl_adminusers.Name = "lbl_adminusers";
             lbl_adminusers.Size = new Size(172, 17);
             lbl_adminusers.TabIndex = 0;
@@ -67,50 +67,17 @@
             // 
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUsers.Columns.AddRange(new DataGridViewColumn[] { id, clave, email, nombreUsuario, tipoUsuario, ultimoIngreso });
-            dgvUsers.Location = new Point(12, 29);
+            dgvUsers.Location = new Point(8, 29);
             dgvUsers.Name = "dgvUsers";
             dgvUsers.RowTemplate.Height = 25;
             dgvUsers.Size = new Size(646, 240);
             dgvUsers.TabIndex = 1;
             dgvUsers.CellClick += dgvUsers_CellClick;
-            dgvUsers.CellContentClick += dgvUsers_CellContentClick;
-            // 
-            // id
-            // 
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            // 
-            // clave
-            // 
-            clave.HeaderText = "clave";
-            clave.Name = "clave";
-            // 
-            // email
-            // 
-            email.HeaderText = "email";
-            email.Name = "email";
-            // 
-            // nombreUsuario
-            // 
-            nombreUsuario.HeaderText = "nombre usuario";
-            nombreUsuario.Name = "nombreUsuario";
-            // 
-            // tipoUsuario
-            // 
-            tipoUsuario.HeaderText = "tipo usuario";
-            tipoUsuario.Name = "tipoUsuario";
-            // 
-            // ultimoIngreso
-            // 
-            ultimoIngreso.HeaderText = "ultimo ingreso";
-            ultimoIngreso.Name = "ultimoIngreso";
-            ultimoIngreso.ReadOnly = true;
             // 
             // btnAdd
             // 
             btnAdd.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdd.Location = new Point(502, 314);
+            btnAdd.Location = new Point(498, 314);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(75, 23);
             btnAdd.TabIndex = 2;
@@ -122,7 +89,7 @@
             // 
             btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnDelete.ForeColor = Color.Crimson;
-            btnDelete.Location = new Point(583, 314);
+            btnDelete.Location = new Point(579, 314);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 3;
@@ -133,7 +100,7 @@
             // btnCargarUsers
             // 
             btnCargarUsers.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCargarUsers.Location = new Point(502, 275);
+            btnCargarUsers.Location = new Point(498, 275);
             btnCargarUsers.Name = "btnCargarUsers";
             btnCargarUsers.Size = new Size(156, 33);
             btnCargarUsers.TabIndex = 4;
@@ -225,7 +192,7 @@
             // btnSave
             // 
             btnSave.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSave.Location = new Point(541, 343);
+            btnSave.Location = new Point(537, 343);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 23);
             btnSave.TabIndex = 14;
@@ -233,11 +200,49 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // id
+            // 
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
+            // 
+            // clave
+            // 
+            clave.DataPropertyName = "Clave";
+            clave.HeaderText = "clave";
+            clave.Name = "clave";
+            // 
+            // email
+            // 
+            email.DataPropertyName = "Email";
+            email.HeaderText = "email";
+            email.Name = "email";
+            // 
+            // nombreUsuario
+            // 
+            nombreUsuario.DataPropertyName = "NombreUsuario";
+            nombreUsuario.HeaderText = "nombre usuario";
+            nombreUsuario.Name = "nombreUsuario";
+            // 
+            // tipoUsuario
+            // 
+            tipoUsuario.DataPropertyName = "TipoUsuario";
+            tipoUsuario.HeaderText = "tipo usuario";
+            tipoUsuario.Name = "tipoUsuario";
+            // 
+            // ultimoIngreso
+            // 
+            ultimoIngreso.DataPropertyName = "UltimoIngreso";
+            ultimoIngreso.HeaderText = "ultimo ingreso";
+            ultimoIngreso.Name = "ultimoIngreso";
+            ultimoIngreso.ReadOnly = true;
+            // 
             // AdminUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(670, 444);
+            ClientSize = new Size(658, 444);
             Controls.Add(btnSave);
             Controls.Add(txtTipoUser);
             Controls.Add(txtNombreUser);
@@ -267,12 +272,6 @@
         private DataGridView dgvUsers;
         private Button btnAdd;
         private Button btnDelete;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn clave;
-        private DataGridViewTextBoxColumn email;
-        private DataGridViewTextBoxColumn nombreUsuario;
-        private DataGridViewTextBoxColumn tipoUsuario;
-        private DataGridViewTextBoxColumn ultimoIngreso;
         private Button btnCargarUsers;
         private Label lblId;
         private Label lblClave;
@@ -285,5 +284,11 @@
         private TextBox txtNombreUser;
         private TextBox txtTipoUser;
         private Button btnSave;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn clave;
+        private DataGridViewTextBoxColumn email;
+        private DataGridViewTextBoxColumn nombreUsuario;
+        private DataGridViewTextBoxColumn tipoUsuario;
+        private DataGridViewTextBoxColumn ultimoIngreso;
     }
 }

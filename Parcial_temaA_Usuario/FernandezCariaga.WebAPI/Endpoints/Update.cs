@@ -20,10 +20,10 @@ namespace FernandezCariaga.WebAPI.Endpoints
             _context = context;
         }
 
-        [HttpPut("api/usuarios/{id}")]
+        [HttpPut("api/usuarios/{NombreUsuario}")]
         public async override Task<ActionResult<GenericResponse>> HandleAsync(UpdateRequest request, CancellationToken cancellationToken = default)
         {
-            var usuarioToUpdate = await _context.Usuarios.FirstOrDefaultAsync(x => x.id == request.id);
+            var usuarioToUpdate = await _context.Usuarios.FirstOrDefaultAsync(x => x.NombreUsuario == request.NombreUsuario);
             var resultado = new GenericResponse { Result = false };
             if (usuarioToUpdate != null)
             {

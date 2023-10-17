@@ -1,6 +1,8 @@
 ﻿using FernandezCariaga.Desktop.Helper;
 using FernandezCariaga.Entidades;
 using FernandezCariaga.Models.Responses;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace FernandezCariaga.Desktop
 {
@@ -46,8 +48,8 @@ namespace FernandezCariaga.Desktop
         private void CheckActions()
         {
             btnAdd.Enabled = !_isEdit;
-            btnDelete.Enabled = !_isEdit;
-            btnSave.Enabled = !_isEdit;
+            btnDelete.Enabled = _isEdit;
+            btnSave.Enabled = _isEdit;
         }
 
         private async void btnCargarUsers_Click(object sender, EventArgs e)
@@ -59,9 +61,9 @@ namespace FernandezCariaga.Desktop
         private async void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var selectedItem = _usuarios[e.RowIndex];
-            var selectedItemId = selectedItem.id;
+            var selectedItemId = selectedItem.NombreUsuario;
 
-            var user = await HttpClientHelper.GetAsync<Usuario>($"{_baseEndpointUrl}/{selectedItemId.ToString()}");
+            var user = await HttpClientHelper.GetAsync<Usuario>($"{_baseEndpointUrl}/{selectedItemId}");
             if (user is not null)
             {
                 _isEdit = true;
@@ -69,6 +71,13 @@ namespace FernandezCariaga.Desktop
                 LoadUsers(user);
                 CheckActions();
             }
+        }
+
+        private bool MailValido(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+            Regex regex = new Regex(pattern);
+            return regex.IsMatch(email);
         }
 
         private async void btnAdd_Click(object sender, EventArgs e)
@@ -81,13 +90,27 @@ namespace FernandezCariaga.Desktop
                 TipoUsuario = Int32.Parse(txtTipoUser.Text),
             };
 
+            //System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            //if (txtEmail.Text.Length > 0 && txtEmail.Text.Trim().Length != 0)
+            //{
+            //    if (!rEmail.IsMatch(txtEmail.Text.Trim()))
+            //    {
+            //        MessageBox.Show("Email invalido");
+            //        txtEmail.SelectAll();
+            //        e.Cancel = true;
+            //    };
+            //}
+
             var result = await HttpClientHelper.PostAsync<Usuario>($"{_baseEndpointUrl}", newItemAdd);
 
             await RefreshGridAsync();
+
+            MessageBox.Show("Creacion de usuario exitosa.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+
             var itemToUpdate = new Usuario
             {
                 Clave = txtClave.Text,
@@ -96,7 +119,7 @@ namespace FernandezCariaga.Desktop
                 TipoUsuario = Int32.Parse(txtTipoUser.Text),
             };
 
-            var result = await HttpClientHelper.PutAsync<GenericResponse>($"{_baseEndpointUrl}", itemToUpdate);
+            var result = await HttpClientHelper.PutAsync<GenericResponse>($"{_baseEndpointUrl}/{itemToUpdate.NombreUsuario}", itemToUpdate);
 
             _isEdit = false;
 

@@ -90,22 +90,25 @@ namespace FernandezCariaga.Desktop
                 TipoUsuario = Int32.Parse(txtTipoUser.Text),
             };
 
-            //System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            //if (txtEmail.Text.Length > 0 && txtEmail.Text.Trim().Length != 0)
-            //{
-            //    if (!rEmail.IsMatch(txtEmail.Text.Trim()))
-            //    {
-            //        MessageBox.Show("Email invalido");
-            //        txtEmail.SelectAll();
-            //        e.Cancel = true;
-            //    };
-            //}
+            System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            if (txtEmail.Text.Length > 0 && txtEmail.Text.Trim().Length != 0)
+            {
+                if (!rEmail.IsMatch(txtEmail.Text.Trim()))
+                {
+                    MessageBox.Show("Email invalido. Por favor introduzca un mail valido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtEmail.SelectAll();
+                }
+                else
+                {
+                    var result = await HttpClientHelper.PostAsync<Usuario>($"{_baseEndpointUrl}", newItemAdd);
 
-            var result = await HttpClientHelper.PostAsync<Usuario>($"{_baseEndpointUrl}", newItemAdd);
+                    await RefreshGridAsync();
 
-            await RefreshGridAsync();
+                    MessageBox.Show("Creacion de usuario exitosa.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
 
-            MessageBox.Show("Creacion de usuario exitosa.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -113,13 +116,14 @@ namespace FernandezCariaga.Desktop
 
             var itemToUpdate = new Usuario
             {
+                id = Guid.Parse(txtId.Text),
                 Clave = txtClave.Text,
                 Email = txtEmail.Text,
                 NombreUsuario = txtNombreUser.Text,
                 TipoUsuario = Int32.Parse(txtTipoUser.Text),
             };
 
-            var result = await HttpClientHelper.PutAsync<GenericResponse>($"{_baseEndpointUrl}/{itemToUpdate.NombreUsuario}", itemToUpdate);
+            var result = await HttpClientHelper.PutAsync<GenericResponse>($"{_baseEndpointUrl}", itemToUpdate);
 
             _isEdit = false;
 
@@ -133,6 +137,12 @@ namespace FernandezCariaga.Desktop
             var result = await HttpClientHelper.DeleteAsync<GenericResponse>($"{_baseEndpointUrl}", itemToDelete);
 
             await RefreshGridAsync();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+            
         }
     }
 }

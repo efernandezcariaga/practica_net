@@ -30,6 +30,12 @@
         {
             lbl_adminusers = new Label();
             dgvUsers = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
+            clave = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            nombreUsuario = new DataGridViewTextBoxColumn();
+            tipoUsuario = new DataGridViewTextBoxColumn();
+            ultimoIngreso = new DataGridViewTextBoxColumn();
             btnAdd = new Button();
             btnDelete = new Button();
             btnCargarUsers = new Button();
@@ -44,12 +50,7 @@
             txtNombreUser = new TextBox();
             txtTipoUser = new TextBox();
             btnSave = new Button();
-            id = new DataGridViewTextBoxColumn();
-            clave = new DataGridViewTextBoxColumn();
-            email = new DataGridViewTextBoxColumn();
-            nombreUsuario = new DataGridViewTextBoxColumn();
-            tipoUsuario = new DataGridViewTextBoxColumn();
-            ultimoIngreso = new DataGridViewTextBoxColumn();
+            btnCancel = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
@@ -73,6 +74,44 @@
             dgvUsers.Size = new Size(646, 240);
             dgvUsers.TabIndex = 1;
             dgvUsers.CellClick += dgvUsers_CellClick;
+            // 
+            // id
+            // 
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            id.Name = "id";
+            id.ReadOnly = true;
+            // 
+            // clave
+            // 
+            clave.DataPropertyName = "Clave";
+            clave.HeaderText = "clave";
+            clave.Name = "clave";
+            // 
+            // email
+            // 
+            email.DataPropertyName = "Email";
+            email.HeaderText = "email";
+            email.Name = "email";
+            // 
+            // nombreUsuario
+            // 
+            nombreUsuario.DataPropertyName = "NombreUsuario";
+            nombreUsuario.HeaderText = "nombre usuario";
+            nombreUsuario.Name = "nombreUsuario";
+            // 
+            // tipoUsuario
+            // 
+            tipoUsuario.DataPropertyName = "TipoUsuario";
+            tipoUsuario.HeaderText = "tipo usuario";
+            tipoUsuario.Name = "tipoUsuario";
+            // 
+            // ultimoIngreso
+            // 
+            ultimoIngreso.DataPropertyName = "UltimoIngreso";
+            ultimoIngreso.HeaderText = "ultimo ingreso";
+            ultimoIngreso.Name = "ultimoIngreso";
+            ultimoIngreso.ReadOnly = true;
             // 
             // btnAdd
             // 
@@ -200,49 +239,23 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
-            // id
+            // btnCancel
             // 
-            id.DataPropertyName = "id";
-            id.HeaderText = "id";
-            id.Name = "id";
-            id.ReadOnly = true;
-            // 
-            // clave
-            // 
-            clave.DataPropertyName = "Clave";
-            clave.HeaderText = "clave";
-            clave.Name = "clave";
-            // 
-            // email
-            // 
-            email.DataPropertyName = "Email";
-            email.HeaderText = "email";
-            email.Name = "email";
-            // 
-            // nombreUsuario
-            // 
-            nombreUsuario.DataPropertyName = "NombreUsuario";
-            nombreUsuario.HeaderText = "nombre usuario";
-            nombreUsuario.Name = "nombreUsuario";
-            // 
-            // tipoUsuario
-            // 
-            tipoUsuario.DataPropertyName = "TipoUsuario";
-            tipoUsuario.HeaderText = "tipo usuario";
-            tipoUsuario.Name = "tipoUsuario";
-            // 
-            // ultimoIngreso
-            // 
-            ultimoIngreso.DataPropertyName = "UltimoIngreso";
-            ultimoIngreso.HeaderText = "ultimo ingreso";
-            ultimoIngreso.Name = "ultimoIngreso";
-            ultimoIngreso.ReadOnly = true;
+            btnCancel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancel.Location = new Point(579, 410);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 15;
+            btnCancel.Text = "Cancelar";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // AdminUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(658, 444);
+            Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtTipoUser);
             Controls.Add(txtNombreUser);
@@ -290,5 +303,6 @@
         private DataGridViewTextBoxColumn nombreUsuario;
         private DataGridViewTextBoxColumn tipoUsuario;
         private DataGridViewTextBoxColumn ultimoIngreso;
+        private Button btnCancel;
     }
 }

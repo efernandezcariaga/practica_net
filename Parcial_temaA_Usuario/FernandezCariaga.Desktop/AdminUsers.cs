@@ -107,8 +107,6 @@ namespace FernandezCariaga.Desktop
                     MessageBox.Show("Creacion de usuario exitosa.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-
-
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
